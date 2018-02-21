@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="personCtrl">
+
+First Name: <input type="text" ng-model="firstName"><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+<form>
+  Pick a topic:
+  <input type="radio" ng-model="myVar" value="male">male
+  <input type="radio" ng-model="myVar" value="female">female
+  <input type="radio" ng-model="myVar" value="others">others
+</form>
+
+<div ng-switch="myVar">
+  <div ng-switch-when="male">
+     <h1>male</h1>
+     <p>Welcome to a world of male.</p>
+  </div>
+  <div ng-switch-when="tuts">
+     <h1>Tutorials</h1>
+     <p>Learn from examples.</p>
+  </div>
+  <div ng-switch-when="others">
+     <h1>others</h1>
+     <p>Read about others.</p>
+  </div>
+</div>
+
+<p>The ng-switch directive hides and shows HTML sections depending on the value of the radio buttons.</p>
+
+
+Full Name: {{fullName()}}
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('personCtrl', function($scope) {
+    $scope.firstName = "Divya";
+    $scope.lastName = "Sanjay";
+    $scope.fullName = function() {
+        return $scope.firstName + " " + $scope.lastName;
+    };
+});
+</script>
+
+</body>
+</html>
